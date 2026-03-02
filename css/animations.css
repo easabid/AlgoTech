@@ -1,0 +1,169 @@
+/* ============================================
+   AlgoTech IT — Animations
+   Professional scroll-reveal + hover transitions
+   ============================================ */
+
+/* ---------- Scroll Reveal ---------- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grid children */
+.animate-on-scroll[data-delay="1"] { transition-delay: 0.1s; }
+.animate-on-scroll[data-delay="2"] { transition-delay: 0.2s; }
+.animate-on-scroll[data-delay="3"] { transition-delay: 0.3s; }
+.animate-on-scroll[data-delay="4"] { transition-delay: 0.4s; }
+.animate-on-scroll[data-delay="5"] { transition-delay: 0.5s; }
+
+/* ---------- Hero Entrance ---------- */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-1 {
+  animation: heroFadeIn 0.8s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.hero-animate-2 {
+  animation: heroFadeIn 0.8s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.hero-animate-3 {
+  animation: heroFadeIn 0.8s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+/* ---------- Fade In Variants ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Subtle Pulse for accents ---------- */
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Hero Background Gradient Shift ---------- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero {
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* ---------- Floating Dots Background ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ---------- Link/Button Hover Transitions ---------- */
+.card,
+.team-card,
+.project-card,
+.blog-card,
+.value-card,
+.check-item,
+.service-sub-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ---------- Nav Link Underline Transition ---------- */
+.nav-links a::after {
+  transition: width 0.3s ease;
+}
+
+/* ---------- Image Zoom on Hover ---------- */
+.project-card-image img,
+.blog-card-image img {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card-image img,
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.05);
+}
+
+/* ---------- Accessibility: Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-animate-1,
+  .hero-animate-2,
+  .hero-animate-3 {
+    opacity: 1;
+  }
+}
