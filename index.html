@@ -67,19 +67,26 @@
   <main>
     <!-- ========== HERO SECTION ========== -->
     <section class="hero" style="background: linear-gradient(135deg, #0a0e1a 0%, #111827 40%, #0f172a 100%);">
-      <div class="container" style="min-height: 100vh; display: flex; align-items: center; padding-top: 80px;">
-        <div style="max-width: 720px;">
-          <p class="hero-animate-1" style="color: var(--accent-glow); font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">
-            Secure &bull; Scalable &bull; Smart
+      <div class="container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px;">
+        <div style="max-width: 850px; text-align: center;">
+          <p class="hero-animate-1" style="color: var(--accent-glow); font-weight: 600; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;">
+            Welcome to AlgoTech
           </p>
-          <h1 class="hero-animate-1" style="margin-bottom: 24px;">
-            Building Powerful Websites.<br>
-            <span class="text-gradient">Securing Digital Futures.</span>
+          <h1 class="hero-animate-1" style="margin-bottom: 12px; font-size: clamp(2.2rem, 5vw, 3.8rem);">
+            We Don't Just Build Websites.
           </h1>
-          <p class="hero-animate-2" style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 560px; line-height: 1.8;">
-            We design modern, high-performance websites and protect businesses with advanced cybersecurity solutions.
+          <h1 class="hero-animate-1" style="margin-bottom: 28px; font-size: clamp(2.2rem, 5vw, 3.8rem);">
+            <span class="text-gradient">We Engineer Digital Fortresses.</span>
+          </h1>
+          <div class="hero-animate-2" style="margin-bottom: 40px; display: flex; justify-content: center;">
+            <p class="typing-wrapper" style="font-size: 1.15rem; color: var(--accent-cyan); font-family: 'Courier New', monospace; min-height: 1.8em;">
+              <span id="typing-text"></span><span class="typing-cursor">|</span>
+            </p>
+          </div>
+          <p class="hero-animate-2" style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 44px; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+            AlgoTech — where cutting-edge web development meets unbreakable cybersecurity. Your digital presence, fortified.
           </p>
-          <div class="hero-animate-3" style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <div class="hero-animate-3" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
             <a href="contact.html" class="btn btn-primary btn-lg">Get Started</a>
             <a href="projects.html" class="btn btn-outline btn-lg">View Our Work</a>
           </div>
@@ -423,5 +430,52 @@
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
+  <script>
+    // Typing Animation
+    (function() {
+      const phrases = [
+        "Crafting pixel-perfect websites that convert.",
+        "Penetration testing that finds what others miss.",
+        "Full-stack development powered by innovation.",
+        "Cybersecurity shields for the digital age.",
+        "AlgoTech — Code it. Secure it. Scale it.",
+        "From frontend to firewall, we've got you covered."
+      ];
+      const el = document.getElementById('typing-text');
+      if (!el) return;
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 55;
+      const deleteSpeed = 30;
+      const pauseEnd = 2000;
+      const pauseStart = 500;
+
+      function type() {
+        const current = phrases[phraseIndex];
+        if (!isDeleting) {
+          el.textContent = current.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(type, pauseEnd);
+            return;
+          }
+          setTimeout(type, typeSpeed);
+        } else {
+          el.textContent = current.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(type, pauseStart);
+            return;
+          }
+          setTimeout(type, deleteSpeed);
+        }
+      }
+      setTimeout(type, 1000);
+    })();
+  </script>
 </body>
 </html>
